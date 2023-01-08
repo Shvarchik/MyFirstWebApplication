@@ -48,16 +48,17 @@ namespace MyFirstWebApplication.Models
             return listByDate;
         }
 
-        public void Delete(DateTime date)
+        public bool Delete(DateTime date)
         {
             foreach (WeatherForecast weatherForecast in _list)
             {
                 if (weatherForecast.Date == date)
                 {
                     _list.Remove(weatherForecast);
-                    break;
+                    return true;
                 }
             }
+            return false;
         }
     }
 }

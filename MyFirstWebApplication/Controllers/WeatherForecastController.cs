@@ -35,8 +35,11 @@ namespace MyFirstWebApplication.Controllers
         [HttpDelete("delete")]
         public IActionResult Delete(DateTime date)
         {
-            _weatherForecastModel.Delete(date);
-            return Ok();
+            if (_weatherForecastModel.Delete(date))
+            {
+                return Ok();
+            }
+            else return NotFound();
         }
 
         [HttpGet("getall")]
